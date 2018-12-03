@@ -3,13 +3,19 @@ using UnityEngine.UI;
 
 public class ScoreDisplay : MonoBehaviour
 {
-    /// <summary>
-    /// Initialisation
-    /// </summary>
+    private GameSession gameSession;
+    private Text scoreText;
+
+
     void Start()
     {
-        Text myText = GetComponent<Text>();
-        myText.text = ScoreKeeper.score.ToString();
-        ScoreKeeper.Reset();
+        gameSession = FindObjectOfType<GameSession>();
+
+        scoreText = GetComponent<Text>();
+    }
+
+    void Update()
+    {
+        scoreText.text = gameSession.GetScore().ToString();
     }
 }
